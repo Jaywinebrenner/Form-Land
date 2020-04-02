@@ -9,22 +9,24 @@ const Home = () => {
     <View>
       <Modal
       visible={modalOpen}
-      style={styles.modalContent}
       animationType='slide'
       >
+      <View style={styles.modalContent}>
         <Text style={styles.modalText}>Modal Man! modayl Man Modal man.</Text>
         <MaterialIcons
           name='close'
           size={54}
-          color='red'
+          color='gray'
+          styles={{...styles.modalToggle, ...styles.modalClose}}
           onPress={() => setModalOpen(false)}
         />
+        </View>
       </Modal>
       <MaterialIcons
         name='add'
         size={54}
-        color='red'
-        styles={StyleSheet.modalToggle}
+        color='gray'
+styles={StyleSheet.modalToggle}
         onPress={() => setModalOpen(true)}
       />
 
@@ -38,17 +40,25 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 50
   },
   modalText: {
     fontSize: 30,
     color: 'darkgray',
-    marginTop: 150
+    alignSelf: 'center'
   },
   modalToggle: {
-    fontSize: 30,
-    color: 'darkgray',
-    marginTop: 150
-  }
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: 'darkred',
+    padding: 10,
+    borderRadius:10,
+    alignSelf: 'center'
+  },
+  modalClose: {
+    marginTop: 10,
+    marginBottom: 0
+  },
+
 });
 export default Home
