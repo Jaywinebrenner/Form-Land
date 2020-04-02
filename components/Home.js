@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, TouchableOpacity, Modal} from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons';
+import ReviewForm from './ReviewForm'
+
 const Home = () => {
 
   const [ modalOpen, setModalOpen] = useState(false)
@@ -12,21 +14,24 @@ const Home = () => {
       animationType='slide'
       >
       <View style={styles.modalContent}>
-        <Text style={styles.modalText}>Modal Man! modayl Man Modal man.</Text>
-        <MaterialIcons
+        <View style={styles.modalHeader}>
+          <Text style={styles.modalText}>Please Enter Your Information</Text>
+          <MaterialIcons
           name='close'
-          size={54}
-          color='gray'
+          size={35}
+          color='firebrick'
           styles={{...styles.modalToggle, ...styles.modalClose}}
           onPress={() => setModalOpen(false)}
-        />
+          />
         </View>
-      </Modal>
+      <ReviewForm/>
+      </View>
+        </Modal>
       <MaterialIcons
         name='add'
         size={54}
-        color='gray'
-styles={StyleSheet.modalToggle}
+        color='firebrick'
+        styles={StyleSheet.modalToggle}
         onPress={() => setModalOpen(true)}
       />
 
@@ -40,10 +45,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    marginTop: 50
+    marginTop: 50,
+    textAlign: 'center'
   },
   modalText: {
-    fontSize: 30,
+    fontSize: 22,
     color: 'darkgray',
     alignSelf: 'center'
   },
@@ -59,6 +65,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 0
   },
+  modalHeader: {
+    alignItems: 'center'
+  }
 
 });
 export default Home
