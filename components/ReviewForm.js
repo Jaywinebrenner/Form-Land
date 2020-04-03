@@ -7,24 +7,24 @@ import { AntDesign } from '@expo/vector-icons'
 const ReviewForm = () => {
 
   return (
+
     <View>
-      <AntDesign name="form" size={32} color="darkgray" />
+
       <Formik
         initialValues={{
           firstName: '',
           lastName: '',
-          businessOrganization: '',
-          typeOfBusiness: '',
           email: '',
           phone: '',
-          payment: ''
+
         }}
         onSubmit={(values) => {
-
+          console.log(values)
         }}
         >
         {(formikProps) => (
           <View>
+
             <TextInput
               style={styles.input}
               placeholder='First Name'
@@ -39,19 +39,6 @@ const ReviewForm = () => {
               />
             <TextInput
               style={styles.input}
-              placeholder='Business / Organization'
-              onChangeText={formikProps.handleChange('businessOrganization')}
-              value={formikProps.values.businessOrganization}
-              />
-            <TextInput
-              multiline
-              style={styles.input}
-              placeholder='Type of Business'
-              onChangeText={formikProps.handleChange('typeOfBusiness')}
-              value={formikProps.values.typeOfBusiness}
-              />
-            <TextInput
-              style={styles.input}
               placeholder='Email'
               onChangeText={formikProps.handleChange('email')}
               value={formikProps.values.email}
@@ -61,9 +48,14 @@ const ReviewForm = () => {
               placeholder='phone'
               onChangeText={formikProps.handleChange('phone')}
               value={formikProps.values.phone}
+              keyboardType='numeric'
               />
 
-            <Button title='Submit' backgroundColor='blue' color='red' onPress={formikProps.handleSubmit}/>
+            <Button style={styles.submitButton} title='Submit' onPress={formikProps.handleSubmit}/>
+                      <View>
+                        <AntDesign style={styles.formLogo} name="form" size={32} color="darkgray" />
+
+                        </View>
           </View>
         )}
       </Formik>
@@ -73,8 +65,24 @@ const ReviewForm = () => {
 
 const styles = StyleSheet.create({
   input: {
-    height: 60
+    marginTop: 15,
+    height: 40,
+    fontSize: 15,
+    borderWidth: 1,
+    borderColor: 'lightgray',
+    padding: 10,
+    borderRadius: 3,
+    width: 200
   },
+  formLogo: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: -20
+  },
+  submitButton: {
+    backgroundColor: 'firebrick',
+    color: 'red'
+  }
 });
 
 
